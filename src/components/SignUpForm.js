@@ -4,11 +4,13 @@ import Validation from './LoginValidation';
 
 import envelope from './assets/envelope.svg'
 import key from './assets/key.svg'
+import personCircle from './assets/person-circle.svg'
 
-const LoginForm = () => {
-    const [action, setAction] = useState("Log In");
+const SignUpForm = () => {
+    const [action, setAction] = useState("Sign Up");
 
     const [values, setValues] = useState({
+        username: "",
         email: "",
         password: ""
     });
@@ -34,6 +36,11 @@ const LoginForm = () => {
         <form action="" onSubmit={handleSubmit}>
             <div className="inputs">
                 <div className="input">
+                    <img src={personCircle} alt="" />
+                    <input type="text" placeholder="Username" name="username"/>
+                    {errors.username && <span className="text-red">{errors.username}</span>}
+                </div>
+                <div className="input">
                     <img src={envelope} alt="" />
                     <input onChange={handleInput} type="email" placeholder="Email" name="email"/>
                     {errors.email && <span className="text-red">{errors.email}</span>}
@@ -44,9 +51,9 @@ const LoginForm = () => {
                     {errors.password && <span className="text-red">{errors.password}</span>}
                 </div>
             </div>
-        <div className="login-redirect" >Don't have an account? <a href="/signup">Sign up here!</a></div>
+        <div className="login-redirect">Already have an account? <a href="/login">Log in here!</a></div>
         <div className="submit-container">
-            <button type="submit" className="submit" onClick={()=>{setAction("Log In")}}>Log In</button>
+            <button type="submit" className="submit" onClick={()=>{setAction("Sign Up")}}>Create Account</button>
         </div>
         </form>
     </div>
@@ -55,4 +62,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default SignUpForm;
